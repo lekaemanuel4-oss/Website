@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YLLI I ZEMRES</title>
+    <style>
+a {
+    color: #45a049;         /* Makes the link color inherit from its parent */
+    text-decoration: none;  /* Removes the underline */
+}
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+/* Button Style for Feedback Link */
+.feedback-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.feedback-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+body {
+            margin: 0;
+            font-family: Oswald;
+            background-color:  rgb(11, 88, 255);
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+
+        header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        header h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .back-button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  z-index: 999;
+}
+
+.back-button:hover {
+  background-color: #cfcfcf;
+}
+ nav {
+            background-color: #aaff00b9;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        section .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        section .header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        section .toggle {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        section .content {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        section.expanded .content {
+            display: block;
+        }
+
+        section.expanded .toggle::after {
+            content: "▼";
+        }
+
+        section .toggle::after {
+            content: "▸";
+        }
+      footer {
+      background: #333;
+      color: blue;
+      padding: 30px;
+      position: relative;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+      margin-top: 30px;
+    }
+
+    footer h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+
+    /* Star Rating System */
+    #star-rating {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      font-size: 40px;
+      color: #ddd;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .star.selected {
+      color: gold;
+    }
+
+    /* Submit Feedback Button */
+    .submit-btn {
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #00a508;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* Results Button */
+    .results-btn {
+      padding: 12px 25px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      margin-top: 20px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .results-btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive design for mobile devices */
+    @media (max-width: 600px) {
+      footer h2 {
+        font-size: 1.6em;
+      }
+
+      .submit-btn, .results-btn {
+        width: 100%;
+        padding: 15px;
+      }
+
+      #star-rating {
+        font-size: 25px;
+      }
+    }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">←</a>
+    <header>
+        <img src="https://raw.githubusercontent.com/Projekt-dot/Website/main/fotot%20faqet%201-3/YlliiZemres-Kopertina.jpg
+" alt="Header Image">
+        <h1>YLLI I ZEMRES</h1>
+    </header>
+<nav>
+    <a href="index.html">Faqja Kryesore</a>
+</nav>
+     <section>
+        <div class="header">
+            <h2>Lasgush Poradeci</h2>
+            <span class="toggle"></span>
+        </div>
+        <div class="content">
+          <p> Lasgushi ishte një mjeshtër i fjalës që solli një frymë krejtësisht moderne në poezinë shqipe. Ai u edukua në mjedise të rëndësishme kulturore si Athina, Bukureshti dhe Vjena, gjë që e bëri atë të njihej me lëvizjet e mëdha letrare botërore, sidomos Simbolizmin.</p>
+<p><b>Stili:</b> Poezia e tij nuk është thjesht përshkruese; ajo është muzikore, plot ndjesi dhe e mbushur me simbole.</p>
+
+<p><b>Tematikat:</b> Ai këndoi për dashurinë, vdekjen, përjetësinë dhe natyrën (sidomos Liqenin e Ohrit).</p>
+
+<p><b>Gjuha:</b> Përdori një shqipe shumë të pastër dhe të punuar deri në detaje, duke krijuar neologjizma dhe rima unike.</p>  
+        </div>
+    </section>
+
+
+    <section>
+        <div class="header">
+            <h2>Subjekti i veprës</h2>
+            <span class="toggle"></span>
+        </div>
+        <div class="content">
+    Subjekti në këtë vëllim është Udhëtimi Metafizik i Njeriut – nga momenti kur ai mahnitet pas botës tokësore, deri te momenti kur shpirti i tij "çlirohet" dhe bashkohet me përjetësinë.
+
+<li><b>Zhvillimi i Subjektit (Sipas fazave shpirtërore)</b>
+Mund ta ndajmë subjektin e "Yllit të zemrës" në katër akte kryesore, që ndjekin rritjen e vetëdijes së poetit:
+
+<ul>1. Akti i Parë: Mahnitja dhe Rrëmbimi (Dashuria Tokësore)
+Në fillim të vëllimit, subjekti fokusohet te shqisat. Poeti shikon liqenin, shikon vajzën që kalon, dëgjon zhurmën e valëve.
+
+Ngjarja e brendshme: Poeti bie në dashuri. Kjo dashuri është e vrullshme, plot dritë dhe ngjyra. Ai kërkon ta "pushtojë" të bukurën. Këtu kemi poezitë ku përshkruhet bukuria e jashtme e natyrës dhe e gruas.</ul>
+
+<ul>2. Akti i Dytë: Kriza dhe Vuajtja (Mjerimi i Shpirtit)
+Subjekti pëson një thyerje. Poeti kupton se bukuria njerëzore dhe natyra janë të përkohshme (vijnë e ikin).
+
+Ngjarja e brendshme: Lind Malli – një ndjenjë që te Lasgushi është pothuajse sëmundje. Poeti ndjehet i vetmuar dhe i vogël përballë universit. Ai e kupton se dashuria tokësore nuk mjafton për ta mbushur shpirtin e tij të pafundmë. Ky është momenti i "errësirës" para agimit.</ul>
+
+<ul>3. Akti i Tretë: Transformimi (Alkimia e Shpirtit)
+Ky është kulmi i subjektit. Poeti nuk kërkon më të pushtojë gruan apo natyrën, por kërkon të shkrihet me to.
+
+Ngjarja e brendshme: Dashuria kthehet nga njerëzore në hyjnore. Gruaja kthehet në një "yll" ose "hije" që e udhëheq drejt dritës. Këtu ndodh sakrifica (si te "Vdekja e Nositi"). Poeti pranon dhimbjen si mjetin e vetëm për të krijuar art të pavdekshëm. Shpirti i tij fillon të ndriçojë vetë.
+</ul>
+<ul>4. Akti i Katërt: Pajtimi dhe Përjetësia (Vdekja si Lindje)
+Subjekti mbyllet me një paqe absolute.
+</ul></li>
+<li>Ngjarja e brendshme: "Unë-i lirik" nuk ka më frikë nga vdekja. Ai e sheh vdekjen si një kthim në shtëpi, si një bashkim me "Shpirtin e Botës". Liqeni i qetë në perëndim është simboli i këtij akti të fundit. Shpirti i poetit tashmë është bërë pjesë e "Valles së Yjeve".</li>   
+      <li><b>Konflikti Qendror i Subjektit</b>
+Në çdo subjekt ka një konflikt. Te "Ylli i zemrës", konflikti nuk është mes dy njerëzve, por mes të përkohshmes (trupit, kohës që ikën) dhe të përjetshmes (shpirtit, artit).
+Antagonisti: Është koha dhe harresa.
+
+Protagonisti: Është "Zemra" e poetit, e cila lufton për të mbetur një "Yll" që ndriçon edhe pasi trupi të mos jetë më.
+
+<li><b>Përfundimi i Subjektit</b>
+Subjekti i veprës vërteton se bukuria është e vetmja rrugë drejt Zotit. Duke e dashur botën me pastërti, poeti arrin të shohë përtej materies. Prandaj titulli është "Ylli i zemrës" – sepse në fund të rrugëtimit, poeti zbulon se drita që kërkonte në yjet e qiellit, ka qenë gjithmonë brenda zemrës së tij.</li>
+
+
+
+</div>
+    </section>
+
+    <section>
+        <div class="header">
+            <h2>Tematikat e veprës</h2>
+            <span class="toggle"></span>
+        </div>
+        <div class="content">
+    <p></p><b>1. Tematika e Dashurisë: Nga Erotika te Misticizmi</b>
+Dashuria te Lasgushi nuk është thjesht një histori mes dy njerëzve; ajo është një forcë kozmike.
+
+Dashuria si Djegie: Poeti përdor shpesh simbolin e "zjarrit". Dashuria nuk të jep lumturi në kuptimin e zakonshëm, por të "djeg" për të të pastruar.
+
+Malli si Gjendje Ekzistenciale: Malli (longing) është motori i poezisë së tij. Është malli për atë që nuk arrihet dot, për të bukurën që ikën, për idealen.
+
+Gruaja-Ide: Në vëllim, femra transformohet. Ajo nis si një qenie me "sy e flokë", por përfundon si një "hije dritëplotë". Ajo bëhet një urë komunikimi mes poetit dhe Perëndisë.
+
+<p></p><b>2. Tematika e Natyrës: Panteizmi Lasgushian</b>
+Lasgushi është poeti i parë shqiptar që e sheh natyrën si një qenie të gjallë që mendon dhe ndjen.
+
+Liqeni si Tempull: Liqeni i Poradecit është personazhi qendror. Ai nuk është thjesht ujë; ai është një pasqyrë ku poeti sheh veten dhe përjetësinë.
+
+Harmonia me Kosmosin: Tematika e natyrës lidhet me yjet, dritën, dhe natën. Natyra nuk përshkruhet për dekor, por si një gjendje shpirtërore. Kur poeti thotë "mali u nxi", ai po tregon se shpirti i tij po hyn në një fazë meditimi të thellë.
+
+<p></p><b>3. Tematika e Vdekjes: Vdekja dhe Amshimi</b>
+Vdekja te "Ylli i zemrës" nuk është fundi tragjik që sjell tmerr, por një proces natyror dhe mistik.
+
+Vdekja si Gjumë: Lasgushi e krahason shpesh vdekjen me perëndimin e diellit ose me qetësinë e liqenit natën.
+
+Mposhtja e Vdekjes: Poeti beson se njeriu vdes fizikisht, por "Ylli i zemrës" (pjesa hyjnore) kthehet te burimi i dritës. Pra, vdekja është thjesht një "ndërrim jete" apo një kalim në një dimension tjetër ku koha nuk ekziston më.
+
+<p></p><b>4. Tematika e Krijimit: Misioni i Poetit</b>
+Kjo është tema më profesionale dhe filozofike e Lasgushit. Ai flet për vuajtjen që sjell shkrimi i poezisë.
+
+Poeti si Sakrificë: Përmes figurës së Nositi, Lasgushi thotë se arti kërkon një sakrificë të dhimbshme. Që të lindë një varg i bukur, poeti duhet të shterojë veten, të "vdesë" pak nga pak në çdo poezi.
+
+Fjala e Shenjtë: Për të, fjala nuk është thjesht mjet komunikimi, por një ritual. Tematika e krijimit trajton "misterin" se si mendimi kthehet në muzikë vargjesh.
+
+<p></p><b>5. Tematika e Dualitetit: Lufta e të Kundërtave</b>
+Gjithë vepra është e ndërtuar mbi përplasjen e dy botëve:
+
+Drita vs. Errësira: Pa errësirën nuk mund ta shohim dritën e yjeve.
+
+Toka vs. Qielli: Njeriu që ecën mbi tokë, por sytë dhe shpirtin i ka nga qielli.
+
+Koha vs. Përjetësia: Lufta e njeriut për të lënë diçka pas (artin) që koha nuk mund ta fshijë.       
+        </div>
+    </section>
+
+    <section>
+        <div class="header">
+            <h2>Konteksti dhe Struktura </h2>
+            <span class="toggle"></span>
+        </div>
+        <div class="content">
+            "Ylli i zemrës" (1937) nuk është një përmbledhje e rastësishme poezish. Ai është i ndërtuar mbi parimin e cikleve, ku secili cikël përfaqëson një shkallë të ngjitjes së shpirtit:
+<li>Zemra e djalërisë: Pasioni, jeta, shqisat.</li>
+<li>Zemra e mjerimit: Dhimbja, zbrazëtia, përballja me botën.</li>
+<li>Zemra e dritës: Zbulimi i bukurisë hyjnore, rrezatimi i shpirtit.</li>  
+<li>Zemra e vdekjes: Pajtimi me fundin, kalimi në amshim.</li>
+        </div>
+    </section>
+  <section>
+    <div class="header">
+        <h2>Analiza e personazheve</h2>
+        <span class="toggle"></span>
+    </div>
+    <div class="content">
+        <div class="mini-sections">
+     <p></p><b>1.Unë-i Lirik (Poeti - Gjeniu)</b>
+Ky është personazhi qendror që përjeton të gjithë dramën. Ai nuk është një njeri i thjeshtë, por një "murg i artit".
+
+Dualiteti: Ai është i ndarë mes tokës (dëshirave njerëzore) dhe qiellit (aspiratave shpirtërore).
+
+Misioni: Ai e sheh veten si një ndërmjetës. Ai dëgjon atë që të tjerët nuk e dëgjojnë dhe sheh atë që të tjerët nuk e shohin.
+
+Vetmia: Është një personazh thellësisht i vetmuar. Vetmia e tij është e domosdoshme për të komunikuar me "Yllin" (përjetësinë). Ai nuk kërkon shoqërinë e njerëzve, por qetësinë e natyrës.
+
+<p></p><b>2. Vasha (Muza / Bukuria Ideale)</b>
+Ndryshe nga poetët e tjerë, te Lasgushi "Vasha" pëson një transformim drastik gjatë vëllimit.
+
+Nga fizike në metafizike: Në fillim ajo është një vajzë që ecën, me sy dhe flokë. Por shpejt ajo kthehet në një hije dhe më pas në një dritë.
+
+E paarritshmja: Ajo është gjithmonë larg. Distanca mes Poetit dhe Vashës është ajo që krijon poezinë. Po të arrihej vasha, poezia do të mbaronte.
+
+Funksioni: Ajo shërben si "udhërrëfyes". Duke dashuruar vashën, poeti mëson të dashurojë universin. Ajo është mjeti me të cilin poeti kalon nga bota materiale në atë shpirtërore.
+
+<p></p><b>3. Nositi (Poeti si Martir)</b>
+Ky është "personazhi" më tragjik dhe më heroik i vëllimit, i shfaqur te poezia "Vdekja e Nositi".
+
+Simbolika: Nositi (pelikani) përfaqëson poetin në raport me shoqërinë dhe artin e tij.
+
+Sakrifikimi: Ai çan gjoksin e tij që të vegjlit të pinë gjak e të jetojnë. Ky është akti suprem i personazhit lasgushian: ai shkatërron veten (jetën e tij private) për t'i dhënë jetë veprës së artit.
+
+Tragjizmi: Ai vdes i lumtur, sepse e di që gjakmarrja e tij (vargjet) do të jetojë përgjithmonë.
+
+<p></p><b>4. Liqeni (Dëshmitari dhe Alter-Egoja)</b>
+Te Lasgushi, Liqeni i Poradecit sillet plotësisht si një personazh me ndjenja dhe vullnet.
+
+Pasqyrimi: Liqeni është personazhi që pasqyron gjendjen e "Unë-it lirik". Kur poeti është i trazuar, liqeni "shkumon e bije pash më pash". Kur poeti gjen paqen, liqeni "fjet".
+
+Gjuha: Liqeni "flet", "psherëtin", "gjëmon". Ai është i vetmi bashkëbisedues që e kupton poetin.
+
+Uji si mit: Ai përfaqëson pastrimin dhe fillimin e gjithçkaie. Bashkimi i poetit me liqenin është bashkimi i njeriut me elementin amë.
+
+<p></p><b>5. Vdekja (Motra e Bardhë)</b>
+Vdekja nuk është një antagonist (armik), por një personazh që plotëson ciklin.
+
+Portretizimi: Ajo nuk është e zezë apo e frikshme. Shpesh ajo vjen si një "mushkë e bardhë" apo si një gjumë i ëmbël.
+
+Roli: Ajo është ajo që hap derën e përjetësisë. Personazhi i vdekjes te Lasgushi ka për detyrë të heqë "petkun e mishit" që shpirti të fluturojë i lirë drejt yjeve.       
+
+
+
+
+        </div>
+    </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .mini-sections {
+        display: flex;
+        flex-direction: column; /* Stacks sections vertically */
+        gap: 20px;
+    }
+
+    .mini-section {
+        display: flex;
+        flex-direction: column; /* Stacks image above text */
+        text-align: left;
+        padding: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        gap: 10px; /* Adds spacing between elements */
+    }
+
+    .mini-section img {
+        width: 100%; /* Full width for better stacking */
+        max-width: 300px; /* Limits image width for consistent layout */
+        margin: 0 auto; /* Centers the image horizontally */
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover; /* Ensures the image scales without distortion */
+    }
+
+    .text-container {
+        flex: 1;
+    }
+
+    .text-container h3 {
+        margin: 0 0 10px;
+        font-size: 1.2rem;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .text-container p {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #555;
+    }
+</style>
+
+    <section>
+        <div class="header">
+            <h2>Mesazhet e veprës</h2>
+            <span class="toggle"></span>
+        </div>
+        <div class="content">
+     <p></p><b>Mesazhi Metafizik: Pavdekshmëria e Shpirtit</b>
+Mesazhi qendror që i jep edhe titullin veprës është se njeriu nuk është thjesht një qenie prej mishi e kocke.
+
+Thelbi: Brenda çdo zemre njerëzore ekziston një "Yll" – një shkëndijë hyjnore që nuk fiket me vdekjen e trupit.
+
+Mësimi: Njeriu duhet të kujdeset për jetën e tij shpirtërore, sepse vetëm ajo e lidh me përjetësinë. Trupi është i përkohshëm, por "Ylli i zemrës" është i amshueshëm.
+
+<p></p><b>2. Mesazhi Erotik: Dashuria si Shkallë drejt Hyjnores</b>
+Për Lasgushin, dashuria nuk është thjesht një instinkt apo një kënaqësi kalimtare.
+
+Thelbi: Dashuria është forca që e lëviz botën dhe yjet. Përmes adhurimit të së bukurës (vashës), shpirti i njeriut nis rrugëtimin e tij drejt përsosjes.
+
+Mësimi: Dashuria e vërtetë kërkon pastërti dhe adhurim. Ajo nuk është pronësim, por një lloj misticizmi që na bën njerëz më të mirë dhe më të ndritur.
+
+<p></p><b>3. Mesazhi i Krijimit: Arti kërkon Vetëmohim (Sakrificë)</b>
+Ky mesazh vjen fuqishëm përmes simbolit të Nositi.
+
+Thelbi: Asgjë e madhe dhe e bukur nuk lind pa dhimbje. Poeti (artisti) duhet të sakrifikojë jetën e tij, qetësinë dhe lumturinë personale për t'i falur njerëzimit "gjakun" e tij – poezinë.
+
+Mësimi: Krijimi i vlerave të vërteta është një akt heroik. Vuajtja e artistit nuk është e kotë; ajo shndërrohet në dritë për brezat e ardhshëm.
+
+<p></p><b>4. Mesazhi Panteist: Harmonia me Natyrën</b>
+Lasgushi na mesazhon se njeriu dhe natyra nuk janë të ndarë.
+
+Thelbi: Zoti (ose Hyjnorja) gjendet kudo: te liqeni, te rrezja e diellit, te vala që thyhet në breg. Ne jemi pjesë e kësaj harmonie të madhe kozmike.
+
+Mësimi: Njeriu duhet të jetojë në paqe me natyrën dhe ta respektojë atë si një qenie të gjallë. Duke kuptuar gjuhën e natyrës, ne kuptojmë veten tonë.
+
+<p></p><b>Mesazhi mbi Vdekjen: Vdekja si Pajtim dhe Rilindje</b>
+Një nga mesazhet më fisnike të veprës është mposhtja e frikës nga fundi.
+
+Thelbi: Vdekja nuk është një humnerë e zezë, por një proces "shkrirjeje". Poeti e sheh vdekjen si një kthim te burimi, si një qetësi absolute ku shpirti bashkohet me dritën universale.
+
+Mësimi: Mos u frikëso nga vdekja nëse ke jetuar me dinjitet dhe dashuri. Ajo është thjesht një "ndërrim jete" që e mbyll ciklin e mundimeve tokësore.       
+        </div>
+    </section>
+        <section>
+        <div class="header">
+           <a href="quiz.html">
+            <h2>Quiz</h2></a>
+            <span class="toggle"></span>
+        </div>
+        <div class="content">
+            
+        </div>
+    </section>
+    <script>
+        // Select all section headers
+        document.querySelectorAll(".header").forEach(header => {
+            header.addEventListener("click", () => {
+                const section = header.parentElement;
+                const isExpanded = section.classList.contains("expanded");
+
+                // Collapse all sections
+                document.querySelectorAll("section").forEach(sec => sec.classList.remove("expanded"));
+
+                // Toggle the clicked section
+                if (!isExpanded) {
+                    section.classList.add("expanded");
+                }
+            });
+        });
+    </script>
+
+    <footer>
+      <p>&copy; Vlerësojmë veten</p>
+        <p><a href="feedback.html" target="_blank">Kliko këtu për feedback</a></p>
+        <h2>Votoni faqen!</h2>
+
+    <!-- Star Rating System -->
+    <div id="star-rating">
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+    </div>
+
+    <button id="submit-feedback" class="submit-btn" disabled>Dërgo Feedback</button>
+
+    <!-- Button to view results -->
+    
+    </footer>
+<script>
+  // Initialize variables
+  const stars = document.querySelectorAll('.star');
+  let selectedRating = 0;
+
+  // Update star selection
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      selectedRating = star.getAttribute('data-value');
+      updateStarSelection(selectedRating);
+    });
+  });
+
+  // Update the stars to reflect the selected rating
+  function updateStarSelection(rating) {
+    stars.forEach(star => {
+      if (star.getAttribute('data-value') <= rating) {
+        star.classList.add('selected');
+      } else {
+        star.classList.remove('selected');
+      }
+    });
+    // Enable submit button
+    document.getElementById('submit-feedback').disabled = false;
+  }
+
+  // Handle feedback submission
+  document.getElementById('submit-feedback').addEventListener('click', () => {
+    if (selectedRating > 0) {
+      // Save feedback in local storage
+      saveFeedback(selectedRating);
+      // Disable submit button after submission
+      document.getElementById('submit-feedback').disabled = true;
+    }
+  });
+
+  // Save feedback to local storage
+  function saveFeedback(rating) {
+    let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+    feedbacks.push(rating);
+    localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+    alert('Faleminderit për feedback!');
+  }
+</script>
+</body>
+</html>
+
